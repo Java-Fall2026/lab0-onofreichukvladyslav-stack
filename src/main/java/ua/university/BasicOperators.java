@@ -59,13 +59,15 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code score} is less than 0 or greater than 100
      */
     public static char gradeFromScore(int score) {
+        if (score < 0 || score > 100) throw new IllegalArgumentException("Score is not valid!");
+
         char grade = ' ';
         if (score <= 49) grade = 'F';
         else if (score <= 59) grade = 'E';
         else if (score <= 69) grade = 'D';
         else if (score <= 79) grade = 'C';
         else if (score <= 89) grade = 'B';
-        else if (score <= 100) grade = 'A';
+        else grade = 'A';
         return grade;
     }
 
@@ -82,6 +84,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code day} is less than 1 or greater than 7
      */
     public static String dayOfWeek(int day) {
+        if (day < 1 || day > 7) throw new IllegalArgumentException("Invalid day of week!");
         String DayName = " ";
         switch (day){
             case 1: DayName = "Monday"; break;
@@ -103,6 +106,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is negative
      */
     public static int[] countdown(int n) {
+        if (n < 0) throw new IllegalArgumentException("Invalid number");
         int[] arr = new int[n];
         for (int i = 0; i < n; i++){
             arr[i] = n - i;
@@ -118,6 +122,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is negative
      */
     public static long factorial(int n) {
+        if (n < 0) throw new IllegalArgumentException("Invalid number for factorial");
         int res = 1;
         for (int i = 1; i<=n; res*=i, i++);
         return res;
@@ -132,6 +137,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code arr} is null
      */
     public static int[] reverseArray(int[] arr) {
+        if (arr == null) throw new IllegalArgumentException("Error!");
         int[] temp = new int[arr.length];
         for (int i = 0; i < arr.length; i++){
             temp[i] = arr[arr.length - 1 - i];
@@ -147,6 +153,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code matrix} is null
      */
     public static int sumMatrix(int[][] matrix) {
+        if (matrix == null) throw new IllegalArgumentException("Matrix is null!");
         int sum = 0;
         for (int[] row : matrix) {
             for (int value : row) {
@@ -167,6 +174,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code s} is null
      */
     public static boolean isPalindrome(String s) {
+        if (s == null) throw new IllegalArgumentException("s is null!");
         int first = 0;
         int last = s.length() - 1;
 
@@ -186,6 +194,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code arr} is null or empty
      */
     public static int[] findMinMax(int[] arr) {
+        if (arr == null || arr.length == 0) throw new IllegalArgumentException("Array is empty!");
         int max = 0;
         int min = 0;
         for (int i = 0; i < arr.length; i++){
@@ -205,6 +214,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is less than 1
      */
     public static int[][] multiplicationTable(int n) {
+        if (n < 1) throw new IllegalArgumentException("Invalid number!");
         int[][] table = new int[n][n];
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n; j++){
@@ -256,6 +266,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code s} is null
      */
     public static int countVowels(String s) {
+        if (s == null) throw new IllegalArgumentException("String is null!");
         s = s.toLowerCase();
         int count = 0;
         for (int i = 0; i < s.length(); i++){
@@ -273,6 +284,7 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is negative
      */
     public static int[] fibonacci(int n) {
+        if (n < 0) throw new IllegalArgumentException("Negative number!");
         int[] arr = new int[n];
         arr[0] = 0;
         arr[1] = 1;
