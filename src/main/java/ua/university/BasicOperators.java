@@ -15,7 +15,11 @@ public class BasicOperators {
      * @return double array where [0] is the sum and [1] is the average
      */
     public static double[] sumAndAverage(int a, int b, int c) {
-        return null;
+        int sum = a + b + c;
+        double[] arr = new double[2];
+        arr[0] = sum;
+        arr[1] = (double)sum / 3;
+        return arr;
     }
 
     /**
@@ -27,7 +31,14 @@ public class BasicOperators {
      * @return the largest of the three values
      */
     public static int maxOfThree(int a, int b, int c) {
-        return 0;
+        int[] arr = new int[3];
+        arr[0] = a; arr[1] = b; arr[2] = c;
+        int n = 2;
+        int max = 0;
+        for (int i = 0; i <= n; ++i){
+            if(max < arr[i]) max = arr[i];
+        }
+        return max;
     }
 
     /**
@@ -48,7 +59,14 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code score} is less than 0 or greater than 100
      */
     public static char gradeFromScore(int score) {
-        return '0';
+        char grade = ' ';
+        if (score <= 49) grade = 'F';
+        else if (score <= 59) grade = 'E';
+        else if (score <= 69) grade = 'D';
+        else if (score <= 79) grade = 'C';
+        else if (score <= 89) grade = 'B';
+        else if (score <= 100) grade = 'A';
+        return grade;
     }
 
     /**
@@ -64,7 +82,17 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code day} is less than 1 or greater than 7
      */
     public static String dayOfWeek(int day) {
-        return null;
+        String DayName = " ";
+        switch (day){
+            case 1: DayName = "Monday"; break;
+            case 2: DayName = "Tuesday"; break;
+            case 3: DayName = "Wednesday"; break;
+            case 4: DayName = "Thursday"; break;
+            case 5: DayName = "Friday"; break;
+            case 6: DayName = "Saturday"; break;
+            case 7: DayName = "Sunday"; break;
+        }
+        return DayName;
     }
 
     /**
@@ -75,7 +103,11 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is negative
      */
     public static int[] countdown(int n) {
-        return null;
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++){
+            arr[i] = n - i;
+        }
+        return arr;
     }
 
     /**
@@ -86,7 +118,9 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is negative
      */
     public static long factorial(int n) {
-        return 0;
+        int res = 1;
+        for (int i = 1; i<=n; res*=i, i++);
+        return res;
     }
 
     /**
@@ -98,7 +132,11 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code arr} is null
      */
     public static int[] reverseArray(int[] arr) {
-        return null;
+        int[] temp = new int[arr.length];
+        for (int i = 0; i < arr.length; i++){
+            temp[i] = arr[arr.length - 1 - i];
+        }
+        return temp;
     }
 
     /**
@@ -109,7 +147,13 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code matrix} is null
      */
     public static int sumMatrix(int[][] matrix) {
-        return 0;
+        int sum = 0;
+        for (int[] row : matrix) {
+            for (int value : row) {
+                sum += value;
+            }
+        }
+        return sum;
     }
 
     /**
@@ -123,7 +167,15 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code s} is null
      */
     public static boolean isPalindrome(String s) {
-        return false;
+        int first = 0;
+        int last = s.length() - 1;
+
+        while (first < last){
+            if (s.charAt(first) != s.charAt(last)) return false;
+            first++;
+            last--;
+        }
+        return true;
     }
 
     /**
@@ -134,7 +186,13 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code arr} is null or empty
      */
     public static int[] findMinMax(int[] arr) {
-        return null;
+        int max = 0;
+        int min = 0;
+        for (int i = 0; i < arr.length; i++){
+            if (max <= arr[i]) max = arr[i];
+            if (min > arr[i]) min = arr[i];
+        }
+        return new int[]{min, max};
     }
 
     /**
@@ -147,7 +205,13 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is less than 1
      */
     public static int[][] multiplicationTable(int n) {
-        return null;
+        int[][] table = new int[n][n];
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                table[i][j] = (i + 1) * (j + 1);
+            }
+        }
+        return table;
     }
 
     /**
@@ -158,7 +222,11 @@ public class BasicOperators {
      *         an empty array if {@code n} is less than 2
      */
     public static int[] evenNumbersUpToN(int n) {
-        return null;
+        int[] nums = new int[n / 2];
+        for(int i = 0; i < nums.length; i++){
+            nums[i] = 2 * (i + 1);
+        }
+        return nums;
     }
 
     /**
@@ -169,7 +237,12 @@ public class BasicOperators {
      *         {@code false} for any {@code n} less than 2
      */
     public static boolean isPrime(int n) {
-        return false;
+        if (n <= 1) return false;
+
+        for (int i = 2; i < n; i++){
+            if (n % i == 0) return false;
+        }
+        return true;
     }
 
     /**
@@ -183,7 +256,12 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code s} is null
      */
     public static int countVowels(String s) {
-        return 0;
+        s = s.toLowerCase();
+        int count = 0;
+        for (int i = 0; i < s.length(); i++){
+            if (s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' || s.charAt(i) == 'o' || s.charAt(i) == 'u') count++;
+        }
+        return count;
     }
 
     /**
@@ -195,7 +273,14 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code n} is negative
      */
     public static int[] fibonacci(int n) {
-        return null;
+        int[] arr = new int[n];
+        arr[0] = 0;
+        arr[1] = 1;
+        for (int i = 2; i < n; i++)
+        {
+            arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        return arr;
     }
 
     /**
@@ -207,7 +292,17 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code matrix} is null
      */
     public static int[][] transpose(int[][] matrix) {
-        return null;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+
+        int[][] transpose = new int[n][m];
+        for(int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+        return transpose;
     }
 
     /**
@@ -219,6 +314,8 @@ public class BasicOperators {
      * @throws IllegalArgumentException if {@code arr} is null
      */
     public static int[] sortArray(int[] arr) {
-        return null;
+        int[] temp = arr.clone();
+        java.util.Arrays.sort(temp);
+        return temp;
     }
 }
